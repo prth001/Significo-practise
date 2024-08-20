@@ -1,0 +1,135 @@
+1) main div mein height screen nahi deni hai kiyoki jse jse
+website baadi hoti jaegi height badhti jaegi or height ase dene se height fix hojaegi
+
+2)-x-translate-1/2 and -y-translate-1/2 for centering the element and for this absolute is comulsary
+as it is centerd with respect to parent div
+
+3)theme attribute we can give custom ye toh body ke theme hai inke madad se hum text ke theme bhi bana sakte hai
+
+4)py:- padding class of tailswind css which comes under cateogry padding py-4 means vertical padding which means it sets padding for both the top and bottom of the element.
+
+5)section body.section to get all element of body.sectionlgake mera code nahi chla
+
+6)w-[5rem] =means width of the element to 5 times the root elements font size. The rem unit stands for "root em," where 1 rem is equal to the font size of the root element 
+
+7)jiska z index jada hota hai vo wala upar aata hojaegi.isliye video ka z index bada diya
+
+8)whitespace nowrap:- wrap nahi karega same linemein rahega 
+
+9)overflow-hidden :- the part which is going to be out will be hidden
+
+10)w-fit ke sath -x-translate-1/3 nahi toh scroll nahi hota hai.
+
+11) scale-[1]:- iske madad se hum poore div ke element ko ek sath enlarge karskte hai or chota bhi karskte hai
+
+12)absolute use krne se jitne mein text ya fir div hai utni hi width ayegi
+
+13) ::selection selector matches the portion of an element that is selected by a user.
+
+14)to select all image from console document.queryselector(",class").img.forEach()
+
+15)object-cover fit the image in whole circle whatever the size.
+
+16)leading:- line height isse hum line height mein gap deskte hai line height mtlb hota hai vertical
+distance between two lines.
+
+17):root ase css mein root lgake koi bhi variable ko properties assign kr ste hai jse ke color fir 
+unn color ke jagah unn vriable ka naam use krskte hojaegi
+
+18)inline block element banane ke fayede:-
+   -apan khud ke height or width deskte hai.
+   -inline hota toh jitni uss element ke height or width hai bss utni hi count hoti
+   -lykn inline block mein block inline dono ke property use krskte hai
+
+19)sticky :- sticky use karne se scroll krne pr bhi vo fix hojata hai scroll nahi hota isliye craft mein
+ltext element jaake scroll krne pr vse hi rahe unpr sticky lgadia
+
+20)flex use karne pr jo height rehti hai kisse bhi div ke vo jisme flex lgaya hai uske rehti hai isliye
+jobhi uske child div rehte hai unke height bhi sb brabr jitni koi bhi div maximum height lerha hai utni
+hojaati hai usko sahi karne ke liye jis div mein height  uske content brabr chaiye usme parent div mein
+jisme flex use kra hai usme items-start likh deta hai
+
+21)vh-viewport height = [400vh] means 400times the height of viewport and the viewport is The
+visible screen without scrolling.
+
+22)100vh mtlb screen ke brabr
+
+23)flex-shrink-0:- controls how elements will lose width (for rows) or height (for columns) 
+when a flex container does not have enough space for them.ek ke upar ek nahi aane dega
+
+24)tracking-toght extra space dur krne ke liye
+
+25)-rotate-[16deg]:- to rotate the div object
+
+
+
+------------------------------------------JavaScript----------------------------------------
+
+1)animation add karne ke liye gsap cdn search karke 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+2)hum style="--clip" ase style ko variable bna ke css se connect krskte hai
+<div style="--clip :50%" class=" vdodic w-full h-screen absolute top-0 left-0 bg-black z-[3] overflow-hidden">
+<video autoplay loop muted class="absolute w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" src="https://cdn.significo.com/videos/significo-main-hero.mp4"></video>
+</div>
+
+     -Or iss variable ke through css mein propery apply krskte hai 
+               .vdodiv{
+                        clip-path: circle(var(--clip) at 50% 50%);
+                      }
+                      iske madad se hum jo bhi video image hai usko center se usko chota kerte jae
+                      bss ab hume ab value ko scroll ke sath js se change krna hai
+
+
+3) gsap.to(".vdodiv",{   --> jis bhi element ko animate krna hai(Animates .vdodiv based on the scroll position.)
+      ScrollTrigger:{    --> alag se script add keni pdhti hai iske liye scroll animation ke liye.
+         trigger:".home",
+
+         start:top top",       -->Defines the point where the animation should start relative to the trigger element and the viewport. "top top" means the animation starts when the top of the trigger element reaches the top of the viewport.
+         
+         end:"bottom top",      -->  Defines the point where the animation should end. "bottom top" means the animation ends when the bottom of the trigger element reaches the top of the viewport.
+
+
+         markers:true, --> Enables visual markers on the page to show where the start and end points of the animation are for debugging purposes.
+
+         pin:true,    --> Pins the trigger element in place while the animation is active, preventing it from scrolling out of view.
+
+         scrub:2    -->  Matches the scroll position with a 2-second smooth delay.
+      },
+      '--clip':"0%,
+      ease:Power2,   -->  Applies easing to make the animation smoother.
+      duration:2    --> Sets the total duration of the animation.
+
+
+      Scrub:-  --> scrub controls how an animation is linked to the scrolling of the page. It makes the animation move in sync with the user's scroll position.
+             -->Without scrub: The animation happens automatically when you reach the start of the ScrollTrigger area, and it finishes when you reach the end. It doesn’t matter how much you scroll—once the trigger area is reached, the animation plays out based on its duration.
+
+             --> With scrub: The animation moves in real-time as you scroll through the trigger area. The amount of scroll determines how far along the animation is. For example, if you scroll halfway through the trigger area, the animation will be halfway done.
+
+
+})
+
+4)agar 2 animation ek sath karane hotoh timeline create karni pdhti hai.uske liye same flag ya parameter last mein pass karenge vo kuch bhi hoskta hai 'a','b' kuch bhi
+ 
+5)stagger in gsap :-stagger is a property used to create delays between the start times of animations for a sequence of elements.
+
+6)gsap ke wajah se padding ein issue aarhe hai inko aram se fix krskte hai screen ke jagah ek fix height deskte
+or fir element ko ek or div mein daal kr sticky krskte hai
+
+7)hidden ke jagah opacity lagane ka fayeda hai ke uspe jisse pjs mein perform krskte hai
+
+8) gsap.utils.mapRange(0,window.innerWidth,-200,200,dets.clientX)
+     --gsap.to(this.querySelector(".picture"),{opacity:0,ease:Power4, duration:.5})
+
+     ye use kra hai range lene ke liye listelement jisme naam pe click krne se photo aata hai
+     mapRange se apan range set krskte hai start jb mouse zero pe ho toh -200 leaao image ko or 
+     jb full width pe jb 200 oe or abhi mouse kahan hai usko point karne ke kaam mein aata hai dets.clientX
+     jisme dets variable jo sab detail rkhta hai
+
+9).textContent.split(""):- saare latter array mein chae jaenge
+
+10)locomotive javascript version 5:- isko use krne se apne page pe smooth sccrolling hone lagegi
+
+11)data-  :- koi value set karna chahte ho element pe
